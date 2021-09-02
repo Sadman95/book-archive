@@ -9,11 +9,14 @@ const loadBooks = async () => {
 }
 
 /* Data load to site */
-const booksGallery = document.getElementById('books-gallery');
 const displayBooksInfo = details => {
+    const booksGallery = document.getElementById('books-gallery');
+    booksGallery.textContent = '';
+    /* total search results */
     const totalSearch = document.getElementById('total-search');
     totalSearch.innerText = `${details.length} results found`;
     details.forEach(detail => {
+        // console.log(detail);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
@@ -31,7 +34,11 @@ const displayBooksInfo = details => {
         `;
         booksGallery.appendChild(div);
     }
-    );       
+    );
 }
+
+
+
+
 
 
