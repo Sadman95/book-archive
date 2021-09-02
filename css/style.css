@@ -1,0 +1,28 @@
+body{
+    overflow-Y: scroll;
+    background: url(../images/body-bg.jpg) left top no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 60px;
+}
+
+#preloader{
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background-color: crimson;
+    left: 45%;
+    top: 45%;
+    transform: translate(-50%,-50%);
+    animation: spin 3s infinite alternate;
+    display: none;
+    z-index: 999;
+}
+@keyframes spin {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

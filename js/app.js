@@ -6,32 +6,47 @@ const errorMsg = meassage => {
 }
 
 
+/* onload spinner */
+const booksGallery = document.getElementById('books-gallery');
+const preloader = document.getElementById('preloader');
+const showDisplay = () => {
+    preloader.style.display = 'none';
+}
+const loadGallery = () => {
+    setTimeout(showDisplay, 10000);
+
+}
+
 /* Search button onclick function */
 const totalSearch = document.getElementById('total-search');
 const searchField = document.getElementById('search-field');
 const loadBooks = async () => {
-    if(searchField.value === ''){
-        errorMsg('please search for books');
+    if (searchField.value === '') {
+        errorMsg('Please Search for Books');
     }
 
-    else{
+    else {
+        document.getElementById('heading').style.display = 'none';
+        preloader.style.display = 'block';
+        booksGallery.textContent = '';
+        details.classList.add('d-none');
+        loadGallery();
         errorMsg('');
         const url = `https://openlibrary.org/search.json?q=${searchField.value}`;
         const res = await fetch(url);
         const data = await res.json();
         displayBooksInfo(data.docs);
         searchField.value = '';
-        details.textContent = '';
     }
 }
 
+
 /* Data load to site */
 const displayBooksInfo = details => {
-    if(details.length === 0){
+    if (details.length === 0) {
         errorMsg('Nothing to Display');
     }
-    else{
-        const booksGallery = document.getElementById('books-gallery');
+    else {
         booksGallery.textContent = '';
         /* total search results */
         totalSearch.classList.remove('d-none');
@@ -63,7 +78,7 @@ const displayBooksInfo = details => {
 /* Single book detail */
 const details = document.getElementById('details');
 details.classList.add('d-none');
-const loadDetails = (info,displayDetail) =>{
+const loadDetails = (info, displayDetail) => {
     details.innerHTML = `
         <img src="https://covers.openlibrary.org/b/id/${info}-M.jpg" class="card-img-top" alt="...">
     `;
