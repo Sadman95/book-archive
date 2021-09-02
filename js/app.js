@@ -60,8 +60,8 @@ const displayBooksInfo = details => {
                     <img src= "https://covers.openlibrary.org/b/id/${detail.cover_i ? detail.cover_i : '<a href="#">No image</a>'}-M.jpg" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title">${detail.title}</h5>
-                        1st published year: <p>${detail.first_publish_year}</p> 
-                        <p class="card-text">Publisher: ${detail.publisher}</p>
+                        <p class="card-text text-dark">Publisher: ${detail.publisher}</p>
+                        1st published year: <p class="text-secondary">${detail.first_publish_year}</p> 
                     </div>
                     <div class="card-footer">
                         <a href="#" class="text-muted">By: ${detail.author_name}</a>
